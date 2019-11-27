@@ -1,8 +1,9 @@
 import '@tarojs/async-await'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
-
+import 'taro-ui/dist/style/index.scss'
 import Index from './pages/index'
+import './iconfont/iconfont.css'
 
 import configStore from './store'
 
@@ -27,14 +28,16 @@ class App extends Component {
    */
   config: Config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/login/index',
+      'pages/me/index',
     ],
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
       navigationBarTitleText: 'WeChat',
       navigationBarTextStyle: 'black'
-    }
+    },
   }
 
   componentDidMount () {}
