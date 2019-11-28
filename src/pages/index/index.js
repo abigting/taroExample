@@ -1,12 +1,13 @@
 import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtButton  } from 'taro-ui'
-import './index.css'
+import './index.less'
 import Footer from '../layout/footer';
 import { connect } from '@tarojs/redux'
 import { loginTypeFun } from '../../actions/login';
 import Me from '../me';
 import Login from '../login';
+import Home from '../home';
 
 
 @connect(({ login }) => ({
@@ -35,15 +36,12 @@ export default class Index extends Component {
 
   render () {
     const {current}= this.props.login;
-    console.log(current,'current')
     return (
         <View className='index'>
-          {
-            current===0&&<Login />
-          }
-          {
-            current===4&&<Me />
-          }
+          <View className='content'>
+            {current===4&&<Me />}
+            {current===0&&<Home />}
+          </View>
 
           {/*{*/}
           {/*  this.renderContent(current)*/}

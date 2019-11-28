@@ -2,6 +2,8 @@ import {Component, Config} from '@tarojs/taro'
 import {View} from '@tarojs/components'
 import {AtAvatar, AtList, AtListItem} from 'taro-ui'
 import './index.less'
+import {getList} from '../../services'
+import auth from '../../utils/auth'
 
 export default class Index extends Component {
   constructor(props){
@@ -9,6 +11,15 @@ export default class Index extends Component {
     this.state={
       avatar:require('../../assets/imgs/favicon.png')
     }
+  }
+  async getListThing(){
+    console.log(getList, '123')
+    let res = await getList();
+
+  }
+
+  async login(){
+    let result = await auth.appCheckAuth();
   }
 
   render() {
@@ -18,7 +29,7 @@ export default class Index extends Component {
             <View>
               <AtAvatar circle={true} image={this.state.avatar}/>
             </View>
-            <View>
+            <View onClick={this.login}>
               立即登录
             </View>
             <View className=' arrows'>
@@ -85,7 +96,8 @@ export default class Index extends Component {
                     title='联系客服'
                     extraText='客服时间 07:00-22:00'
                     arrow='right'
-                    onClick={this.handleClick}/>
+                    onClick={()=>this.getListThing()}
+                    />
               </AtList>
             </View>
           </View>
@@ -94,3 +106,4 @@ export default class Index extends Component {
     )
   }
 }
+

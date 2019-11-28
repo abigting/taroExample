@@ -2,7 +2,6 @@ import '@tarojs/async-await'
 import Taro, { Component, Config } from '@tarojs/taro'
 import { Provider } from '@tarojs/redux'
 import 'taro-ui/dist/style/index.scss'
-import Index from './pages/index'
 import './iconfont/iconfont.css'
 
 import configStore from './store'

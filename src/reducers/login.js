@@ -1,4 +1,5 @@
-import {LOGIN_TYPE, UPDATE_CURRENT} from "../constants/login"
+import * as loginConstans from "../constants/login"
+
 const INITIAL_STATE = {
   loginType: false,
   current: 0,
@@ -28,20 +29,36 @@ const INITIAL_STATE = {
       title:'我的',
       iconType:'folder'
     }
-  ]
+  ],
+  //请求接口域名地址
+  baseURL : 'https://xx.xxx.xx/' ,
+  //应用首次加载
+  appOnLaunch : true ,
+  //请求token
+  authorize : ''
 };
 
 export default function login (state = INITIAL_STATE, action) {
   switch (action.type) {
-    case LOGIN_TYPE:
+    case loginConstans.LOGIN_TYPE:
       return {
         ...state,
         loginType: action.data
       };
-    case UPDATE_CURRENT:
+    case loginConstans.UPDATE_CURRENT:
       return {
         ...state,
         current: action.data
+      };
+    case loginConstans.CHANGE_APP_ON_LAUNCH :
+      return {
+        ...state ,
+        appOnLaunch : false
+      };
+    case loginConstans.INSERT_AUTHORIZE :
+      return {
+        ...state ,
+        authorize : action.authorize
       };
     default:
       return state
